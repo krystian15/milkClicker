@@ -49,12 +49,12 @@ class CookieMakersFunctions extends FrontEndViewController{
 
 
   info() {
-    console.log(this.props);
+    //console.log(this.props);
   }
 
   build(action) {
 
-  
+
     if (!this.shouldBuild()) {
       return;
     }

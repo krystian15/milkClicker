@@ -30,7 +30,7 @@ class FrontEndViewController {
   }
 
   updateInformation() {
-    console.log('sdfdsfds');
+    //console.log('sdfdsfds');
   }
 
   init() {
