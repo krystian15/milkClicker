@@ -1,0 +1,31 @@
+@import "colors";
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.actions {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  grid-gap: 30px;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  background-color: $port-gore;
+}
+
+#Cow,
+#Factory,
+#Teleport {
+  $componentsSize: 200px;
+  width: $componentsSize;
+  height: $componentsSize;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
