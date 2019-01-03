@@ -54,6 +54,7 @@ class MilkClicker {
     }
 
   init() {
+    
     this.state.clicker = new Clicker((value, action, data) => this.milkController(value, action, data));
     this.state.cow = new Cow((value, action, data) => this.milkController(value, action, data), '#Cow');
     this.state.factory = new Factory((value, action, data) => this.milkController(value, action, data), '#Factory');

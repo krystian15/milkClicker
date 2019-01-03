@@ -7,6 +7,8 @@ class Teleport extends CookieMakersFunctions{
     super(callback, eventToListen);
 
     this.props = {
+      componentPrimary : 5,
+      milkPerSecond : 0,
       cost: 10,
       count: 0,
       milkCount: 0

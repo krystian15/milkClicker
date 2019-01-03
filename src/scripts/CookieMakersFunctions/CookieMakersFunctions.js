@@ -28,6 +28,10 @@ class CookieMakersFunctions extends FrontEndViewController {
     action === this.componentControllerActionBuild ? ++this.props.count : --this.props.count;
   }
 
+  updateComponentMilkCountPerSec(milk) {
+    this.props.milkPerSecond = Number((milk * 10).toFixed(2));
+  }
+
   isActiveInterval() {
     return this.props.activeInterval;
   }
@@ -47,7 +51,10 @@ class CookieMakersFunctions extends FrontEndViewController {
   }
 
   productionMultipler() {
-    return this.props.count * 0.02;
+    let milkMultipe  = this.props.count * 0.02 * this.props.componentPrimary;
+    this.updateComponentMilkCountPerSec(milkMultipe);
+
+    return milkMultipe;
   }
 
   unsetInterval() {
@@ -80,7 +87,7 @@ class CookieMakersFunctions extends FrontEndViewController {
 
   componentController(action) {
 
-    if (action === "buy") {
+    if (action === this.componentControllerActionBuild) {
       if (!this.shouldBuild()) {
         return;
       }

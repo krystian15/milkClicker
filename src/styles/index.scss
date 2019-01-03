@@ -24,8 +24,30 @@ html {
 #Factory,
 #Teleport {
   $componentsSize: 200px;
+  position: relative;
   width: $componentsSize;
   height: $componentsSize;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.actions-wrapper {
+  text-align: center;
+  position: absolute;
+  bottom: -40px;
+  width: 100%;
+
+
+
+  .component-information {
+  position: relative;
+  .count,
+  .milk-per-sec,
+  .price {
+
+    &:before {
+      content: attr(data-text);
+    }
+  }
+  }
 }
