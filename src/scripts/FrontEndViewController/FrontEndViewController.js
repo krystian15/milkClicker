@@ -1,7 +1,7 @@
 class FrontEndViewController {
-  constructor(eventToLister) {
+  constructor(eventToListen) {
 
-    this.eventToLister = eventToLister;
+    this.eventToLister = eventToListen;
 
     this.init();
   }
@@ -9,7 +9,7 @@ class FrontEndViewController {
   setEventListener() {
     this.elementToListenHTML = document.querySelector(this.eventToLister);
 
-    this.elementToListenHTML.addEventListener('click', () => this.build());
+    //this.elementToListenHTML.addEventListener('click', () => this.componentController('build'));
 
     this.setComponentActionsEventListener();
   }
@@ -20,13 +20,12 @@ class FrontEndViewController {
     this.actions.forEach((element) => element.addEventListener('click', (event) => this.sendAction(event)));
   }
 
-
   sendAction(event) {
-    this.build(event.target.dataset.action);
+    this.componentController(event.target.dataset.action);
   }
 
   unsetEventListener(elementToremoveEventListener) {
-    elementToremoveEventListener.removeEventListener('click', () => this.build());
+    elementToremoveEventListener.removeEventListener('click', () => this.componentController());
   }
 
   updateInformation() {

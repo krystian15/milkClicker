@@ -9,7 +9,7 @@ class Clicker {
     let milkClickerElement = document.querySelector('#MilkClicker');
 
     milkClickerElement.addEventListener('click', () => {
-      this.callback(1);
+      this.callback(1, "add");
     });
   }
 }

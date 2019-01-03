@@ -2,9 +2,9 @@ import CookieMakersFunctions from '../CookieMakersFunctions/CookieMakersFunction
 import './Factory.scss';
 
 class Factory extends CookieMakersFunctions{
-  constructor(callback, eventToLister) {
+  constructor(callback, eventToListen) {
 
-    super(callback, eventToLister);
+    super(callback, eventToListen);
 
     this.props = {
       cost: 5,

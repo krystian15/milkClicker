@@ -1,28 +1,39 @@
 import FrontEndViewController from '../FrontEndViewController/FrontEndViewController';
 
-class CookieMakersFunctions extends FrontEndViewController{
+class CookieMakersFunctions extends FrontEndViewController {
 
-  constructor(callback, eventToLister) {
+  constructor(callback, eventToListen) {
 
-    super(eventToLister);
+    super(eventToListen);
 
     this.callback = callback;
+
+    this.componentControllerActionBuild = "buy";
+    this.componentControllerActionSell = "sell";
   }
 
   shouldBuild() {
     return this.props.milkCount >= this.props.cost;
   }
 
-  updateCost() {
-    this.props.cost *= this.props.count;
+  shouldSell() {
+    return this.props.count >= 1;
   }
 
-  updateCount() {
-    ++this.props.count;
+  updateCost(action) {
+    action === this.componentControllerActionBuild ? this.props.cost *= this.props.count : this.props.cost /= this.props.count;
+  }
+
+  updateCount(action) {
+    action === this.componentControllerActionBuild ? ++this.props.count : --this.props.count;
   }
 
   isActiveInterval() {
     return this.props.activeInterval;
+  }
+
+  shouldUnsetInterval() {
+    return this.props.count === 0 && this.isActiveInterval();
   }
 
   setInterval() {
@@ -40,35 +51,55 @@ class CookieMakersFunctions extends FrontEndViewController{
   }
 
   unsetInterval() {
-    clearInterval(this.props.interval);
+
+    if (this.shouldUnsetInterval()) {
+      clearInterval(this.props.interval);
+    }
   }
 
   setData(milkCount) {
     this.props.milkCount = milkCount;
   }
 
-
   info() {
-    //console.log(this.props);
+    console.log(this.props);
   }
 
-  build(action) {
+  updateComponentParameters(action) {
 
-
-    if (!this.shouldBuild()) {
-      return;
+    if (action === this.componentControllerActionBuild) {
+      this.updateCount(action);
+      this.updateCost(action);
+    } else {
+      this.updateCost(action);
+      this.updateCount(action);
     }
 
-    this.callback(this.props.cost, 'remove');
+    super.updateInformation(action);
+  }
 
-    this.updateCount();
-    this.updateCost();
-    super.updateInformation();
+  componentController(action) {
 
-    this.setInterval();
+    if (action === "buy") {
+      if (!this.shouldBuild()) {
+        return;
+      }
+
+      this.callback(this.props.cost, 'remove');
+      this.setInterval();
+
+    } else {
+      if (!this.shouldSell()) {
+        return;
+      }
+
+      this.callback(this.props.cost, 'sell');
+      this.unsetInterval();
+    }
+
+    this.updateComponentParameters(action);
 
     this.info();
-
   }
 }
 

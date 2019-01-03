@@ -21,7 +21,7 @@ class MilkClicker {
   };
 
 
-  updateMilkCount(value, action, data) {
+  milkController(value, action, data) {
 
     if (action === "remove") {
       this.props.milkCount -= value;
@@ -54,10 +54,10 @@ class MilkClicker {
     }
 
   init() {
-    this.state.clicker = new Clicker((value, action, data) => this.updateMilkCount(value, action));
-    this.state.cow = new Cow((value, action, data) => this.updateMilkCount(value, action), '#Cow');
-    this.state.factory = new Factory((value, action, data) => this.updateMilkCount(value, action), '#Factory');
-    this.state.teleport = new Teleport((value, action, data) => this.updateMilkCount(value, action), '#Teleport');
+    this.state.clicker = new Clicker((value, action, data) => this.milkController(value, action, data));
+    this.state.cow = new Cow((value, action, data) => this.milkController(value, action, data), '#Cow');
+    this.state.factory = new Factory((value, action, data) => this.milkController(value, action, data), '#Factory');
+    this.state.teleport = new Teleport((value, action, data) => this.milkController(value, action, data), '#Teleport');
     this.state.milkSaveData = new MilkSaveData();
     this.sendMilkCount();
   }

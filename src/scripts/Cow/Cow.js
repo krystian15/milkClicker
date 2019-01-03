@@ -2,9 +2,9 @@ import CookieMakersFunctions from '../CookieMakersFunctions/CookieMakersFunction
 import './Cow.scss';
 
 class Cow extends CookieMakersFunctions{
-  constructor(callback, eventToLister) {
+  constructor(callback, eventToListen) {
 
-    super(callback, eventToLister);
+    super(callback, eventToListen);
 
     this.props = {
       cost: 5,
