@@ -51,7 +51,8 @@ class CookieMakersFunctions extends FrontEndViewController {
   }
 
   productionMultipler() {
-    let milkMultipe  = this.props.count * 0.02 * this.props.componentPrimary;
+    let milkMultipe = this.props.count * 0.02 * this.props.componentPrimary;
+
     this.updateComponentMilkCountPerSec(milkMultipe);
 
     return milkMultipe;
@@ -82,7 +83,7 @@ class CookieMakersFunctions extends FrontEndViewController {
       this.updateCount(action);
     }
 
-    super.updateInformation(action);
+    super.updateInformation();
   }
 
   componentController(action) {
@@ -105,9 +106,13 @@ class CookieMakersFunctions extends FrontEndViewController {
     }
 
     this.updateComponentParameters(action);
-
     this.info();
   }
+
+  setProps(props) {
+    super.updateInformation();
+  }
+
 }
 
 export default CookieMakersFunctions;

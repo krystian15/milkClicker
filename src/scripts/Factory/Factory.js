@@ -14,6 +14,9 @@ class Factory extends CookieMakersFunctions{
       milkCount: 0
     }
 
+    super.setProps(this.props);
+
+
   }
 }
 

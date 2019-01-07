@@ -13,6 +13,9 @@ class Teleport extends CookieMakersFunctions{
       count: 0,
       milkCount: 0
     }
+    
+    super.setProps(this.props);
+
   }
 }
 

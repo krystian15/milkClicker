@@ -1,8 +1,6 @@
 class FrontEndViewController {
   constructor(eventToListen) {
-
     this.eventToLister = eventToListen;
-
     this.init();
   }
 
@@ -12,16 +10,15 @@ class FrontEndViewController {
   }
 
   setComponentActionsEventListener() {
-    this.actions = document.querySelectorAll(`${this.eventToLister} .actions-panel button`);
 
+    this.actions = document.querySelectorAll(`${this.eventToLister} .actions-panel button`);
     this.actions.forEach((element) => element.addEventListener('click', (event) => this.sendAction(event)));
   }
 
   setComponentInformationEventListener() {
     this.count = document.querySelector(`${this.eventToLister} .count`);
     this.milkPerSecond = document.querySelector(`${this.eventToLister} .milk-per-sec`);
-    this.price = document.querySelector(`${this.eventToLister} .milk-per-sec`);
-    this.actions.forEach((element) => element.addEventListener('click', (event) => this.sendAction(event)));
+    this.price = document.querySelector(`${this.eventToLister} .price`);
   }
 
   sendAction(event) {
@@ -41,6 +38,7 @@ class FrontEndViewController {
   init() {
     this.setEventListener();
   }
+
 }
 
 export default FrontEndViewController;
